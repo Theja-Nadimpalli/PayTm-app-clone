@@ -22,8 +22,8 @@ const userbody = z.object({
 const transporter = nodemailer.createTransport({
     service:"gmail",
     auth : {
-        user : "thejajc123@gmail.com",
-        pass : "cfku gqxz lngd fjlv"
+        user : process.env.EMAIL as string,
+        pass : process.env.EMAIL_PASS as string
     }
    })
 
@@ -129,7 +129,6 @@ userRouter.post("/verify-account",async (req,res)=>{
 
 
     }catch(err){
-          console.log(err)
           res.status(500).json({
           message : "Unknown error occured. Try again"
         })
@@ -167,10 +166,8 @@ userRouter.post("/verify-status", async (req,res)=>{
             message :"Your Account Is Verified Successfully"
         })
         }catch(err){
-            console.log(err)
             res.status(500).json({
             message : "Unknown error occured. Try again",
-            err:err
         })
         }
 })

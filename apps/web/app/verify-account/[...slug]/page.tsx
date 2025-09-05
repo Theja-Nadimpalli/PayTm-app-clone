@@ -20,11 +20,23 @@ const [state,setstate]=useState(true)
 const router =useRouter()
 
 async function verify(){
+  try{
   const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/user/verify-account`,{
     userid :userid,
     email:email
   })
   alert((response.data as any).message)
+}catch(err){
+          //@ts-ignore
+            if (axios.isAxiosError(err)) {
+                //@ts-ignore
+                alert(err.response?.data.message || "Something went wrong");
+                //@ts-ignore
+            }else{
+                alert("An unexpected error occurred");
+                 }
+          router.push("/")
+      }
 }
 
 
@@ -38,11 +50,16 @@ async function verifystatus(){
   if(response.status===200){
     router.push("/signin")
   }
-  if(response.status===500){
-    router.push("/")
-  }}catch(err){
-    console.log(err)
-  }
+  }catch(err){
+          //@ts-ignore
+            if (axios.isAxiosError(err)) {
+                //@ts-ignore
+                alert(err.response?.data.message || "Something went wrong");
+            }else{
+                alert("An unexpected error occurred");
+                 }
+            router.push("/")
+      }
 }
 useEffect(()=>{
 
