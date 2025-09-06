@@ -10,23 +10,24 @@ interface usercardProps{
     key? : any
 }
 
-export default function(props:usercardProps){
+export default function Usercard(props: usercardProps) {
+  const router = useRouter();
 
-    const router =useRouter()
+  function sendmoney() {
+    router.push(`/send/${props.userid}`);
+  }
 
-    function sendmoney(){
-
-        router.push(`/send/${props.userid}`)
-    }
+  return (
+    <div className="flex flex-col sm:flex-row justify-between items-center my-2  px-5 sm:px-25 ">
+      <div className="flex items-center gap-3 mb-2 sm:mb-0">
+        <span className="rounded-full bg-black text-white font-bold px-3 py-1 text-lg">{props.firstname[0]}</span>
+        <div className="text-base sm:text-lg font-medium">{props.firstname} {props.lastname}</div>
+     </div>
 
   
-
-    return <div className="flex justify-between items-center my-2 px-25">
-        <div className="flex gap-2">
-            <span className="rounded-full bg-black text-white font-bold px-2">{props.firstname[0]}</span>
-            <div className="flex gap-2 items-center">{props.firstname} {props.lastname}</div>
-        </div>
-        <button className="rounded-md bg-black text-white font-bold py-1 px-2 cursor-pointer" onClick={sendmoney}>send money</button>
-
+      <button
+        className="rounded-md bg-black text-white font-bold py-1 px-3 text-sm sm:text-base cursor-pointer hover:bg-slate-700 transition"
+        onClick={sendmoney}> Send Money </button>
     </div>
+  );
 }

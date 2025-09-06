@@ -19,7 +19,7 @@ export default function Topbar(props:topbarProps){
 
 
 
-    return <div className="flex justify-between items-center px-25 fixed py-2 border shadow-black shadow-md w-screen">
+    return <div className="flex justify-between items-center sm:px-25 fixed py-2 border shadow-black shadow-md w-screen px-5">
         <span className="font-extrabold">PayTm</span>
         <div className="flex gap-2 items-center relative">
             <span className="font-bold">Hello </span>

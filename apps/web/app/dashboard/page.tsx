@@ -18,8 +18,8 @@ const users = useGetusers({name})
 
 return <div className="flex flex-col">
     <Topbar firstname={data!.firstname} />
-    <span className="font-bold mt-16 px-25">Your Balance {data!.balance}</span>
-    <div className="flex gap-4 items-center mb-5 px-25">
+    <span className="font-bold mt-16 sm:px-25 px-5">Your Balance {data!.balance}</span>
+    <div className="flex gap-4 items-center mb-5 sm:px-25 px-5">
         <InputBox type="text" text="search users" reference={inputref} />
         <div className="rounded-md border p-1 font-medium bg-black text-white cursor-pointer" onClick={()=>{setName(inputref.current?.value || "")}}>Search</div>
     </div>
